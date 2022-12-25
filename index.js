@@ -827,14 +827,14 @@ SendStream.prototype.type = function type (path) {
 
   if (res.getHeader('Content-Type')) return
 
-  var type = mime.lookup(path)
+  var type = mime.getType(path)
 
   if (!type) {
     debug('no content-type')
     return
   }
 
-  var charset = mime.charsets.lookup(type)
+  var charset = mime.getType(type)
 
   debug('content-type %s', type)
   res.setHeader('Content-Type', type + (charset ? '; charset=' + charset : ''))
